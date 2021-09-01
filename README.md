@@ -1,4 +1,4 @@
-### ProyectoCaldAR
+# ProyectoCaldAR
 Sistema de gestión de mantenimientos de Calderas
 
 ## Descripción
