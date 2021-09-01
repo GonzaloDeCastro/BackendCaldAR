@@ -21,6 +21,9 @@ app.get('/contacto', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'contacto.html'))
 })
 
+app.get('/mantenimientos', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'mantenimientos.html'))
+})
 
 /*const http = require('http')
 
