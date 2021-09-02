@@ -4,7 +4,7 @@
   "description": "Empresa Caldar",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d output --watch"
   },
   "author": "De Castro - Delmonte - Rodriguez",
   "license": "ISC",
@@ -15,8 +15,5 @@
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0"
-  },
-  "scripts":{
-    "build": "babel src -d output --watch"
   }
 }
