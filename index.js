@@ -25,6 +25,34 @@ app.get('/mantenimientos', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'mantenimientos.html'))
 })
 
+app.get('/prueba', (request, response) => {
+    response.send('Prueba')
+})
+
+app.get('/prueba2', (request, response) => {
+    response.send('Prueba2')
+})
+
+app.get('/prueba3', (request, response) => {
+    response.send('Prueba3')
+})
+
+app.get('/pruebaGet', (req, res) => {
+    res.send('PETICION GET RECEIVED');
+});
+
+app.post('/pruebaPost', (req, res) => {
+    res.send('POST REQUEST RECEIVED');
+});
+
+app.put('/pruebaPut', (req, res) => {
+    res.send('UPDATE REQUEST RECEIVED');
+});
+
+app.delete('/pruebaDelete', (req, res) => {
+    res.send('DELETE REQUEST RECEIVED');
+});
+
 /*const http = require('http')
 
 const fs = require('fs')
