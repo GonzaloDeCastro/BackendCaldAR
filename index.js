@@ -25,17 +25,10 @@ app.get('/mantenimientos', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'mantenimientos.html'))
 })
 
-app.get('/prueba', (request, response) => {
-    response.send('Prueba')
+app.get('/clientes', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'clientes.html'))
 })
 
-app.get('/prueba2', (request, response) => {
-    response.send('Prueba2')
-})
-
-app.get('/prueba3', (request, response) => {
-    response.send('Prueba3')
-})
 
 app.get('/pruebaGet', (req, res) => {
     res.send('PETICION GET RECEIVED');

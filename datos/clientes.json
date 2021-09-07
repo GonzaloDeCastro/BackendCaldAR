@@ -1,0 +1,125 @@
+{
+  "clientes" : [
+    {
+      "id": 1,
+      "razon_social": "Skippad",
+      "email": "drosenwald0@forbes.com",
+      "direccion": "11 Corben Terrace",
+      "empresa": "Edificio"
+    }, {
+      "id": 2,
+      "razon_social": "Jabbersphere",
+      "email": "ilewens1@spotify.com",
+      "direccion": "97 Arkansas Avenue",
+      "empresa": "Edificio"
+    }, {
+      "id": 3,
+      "razon_social": "Mydeo",
+      "email": "gcroxton2@state.tx.us",
+      "direccion": "06823 Kenwood Place",
+      "empresa": "Edificio"
+    }, {
+      "id": 4,
+      "razon_social": "Latz",
+      "email": "hlindeboom3@a8.net",
+      "direccion": "108 Delaware Hill",
+      "empresa": "Edificio"
+    }, {
+      "id": 5,
+      "razon_social": "Wikido",
+      "email": "abergstrand4@google.com.au",
+      "direccion": "89 Arrowood Court",
+      "empresa": "Edificio"
+    }, {
+      "id": 6,
+      "razon_social": "Thoughtmix",
+      "email": "rmorton5@gizmodo.com",
+      "direccion": "81 Independence Parkway",
+      "empresa": "Edificio"
+    }, {
+      "id": 7,
+      "razon_social": "Pixope",
+      "email": "cesslemont6@ebay.co.uk",
+      "direccion": "69308 John Wall Drive",
+      "empresa": "Edificio"
+    }, {
+      "id": 8,
+      "razon_social": "Fanoodle",
+      "email": "rjutson7@flickr.com",
+      "direccion": "1 Iowa Lane",
+      "empresa": "Edificio"
+    }, {
+      "id": 9,
+      "razon_social": "Topicshots",
+      "email": "dmarl8@surveymonkey.com",
+      "direccion": "6569 Declaration Junction",
+      "empresa": "Edificio"
+    }, {
+      "id": 10,
+      "razon_social": "Yakijo",
+      "email": "jmanueau9@dropbox.com",
+      "direccion": "2834 South Parkway",
+      "empresa": "Edificio"
+    }, {
+      "id": 11,
+      "razon_social": "Yabox",
+      "email": "rdecarolisa@example.com",
+      "direccion": "85295 Boyd Road",
+      "empresa": "Edificio"
+    }, {
+      "id": 12,
+      "razon_social": "Wikizz",
+      "email": "ksignorib@ask.com",
+      "direccion": "2372 Jana Hill",
+      "empresa": "Edificio"
+    }, {
+      "id": 13,
+      "razon_social": "Latz",
+      "email": "mduferc@columbia.edu",
+      "direccion": "991 Onsgard Way",
+      "empresa": "Edificio"
+    }, {
+      "id": 14,
+      "razon_social": "Viva",
+      "email": "gdoelled@symantec.com",
+      "direccion": "11306 Emmet Place",
+      "empresa": "Edificio"
+    }, {
+      "id": 15,
+      "razon_social": "Yadel",
+      "email": "saucotte@dailymotion.com",
+      "direccion": "74560 Logan Pass",
+      "empresa": "Edificio"
+    }, {
+      "id": 16,
+      "razon_social": "Skaboo",
+      "email": "imeddf@sitemeter.com",
+      "direccion": "38 North Road",
+      "empresa": "Edificio"
+    }, {
+      "id": 17,
+      "razon_social": "Mita",
+      "email": "wgoodfieldg@so-net.ne.jp",
+      "direccion": "6 Red Cloud Terrace",
+      "empresa": "Edificio"
+    }, {
+      "id": 18,
+      "razon_social": "Blogtags",
+      "email": "cdelloydh@yellowbook.com",
+      "direccion": "926 Muir Street",
+      "empresa": "Edificio"
+    }, {
+      "id": 19,
+      "razon_social": "Dabfeed",
+      "email": "poboylei@skype.com",
+      "direccion": "514 Cambridge Circle",
+      "empresa": "Edificio"
+    }, {
+      "id": 20,
+      "razon_social": "Wikizz",
+      "email": "cheatliej@virginia.edu",
+      "direccion": "0430 Corben Place",
+      "empresa": "Edificio"
+    }
+  ] 
+}
