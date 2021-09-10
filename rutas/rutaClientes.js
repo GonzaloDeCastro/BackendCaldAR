@@ -1,17 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const clientesControladora = require('../controladoras/controladoraClientes');
+const clienteController = require('../controladoras/controladoraClientes');
 
-router.get('/clientes', clientesControladora.getAllclientes);
-router.get('/clientes/:param',(req,res) =>{
-    if (req.params.param.match(/^[0-9]*$/)) {
-        clientesControladora.getclientesById(req,res);
-    }
-    else{
-        clientesControladora.getclientesByRazonSocial(req,res);
-    }
+module.exports = () => {
+  router.post('/', clienteController.addNewcliente);
+  
+  router.get('/all', clienteController.getAllclientes);
+  router.get('/tipo/:clienteTipo', clienteController.getclienteByTipo);
+  router.get('/:clienteId', clienteController.getclienteById);
 
-});
+  router.put('/', clienteController.updatecliente);
 
-router.delete('/clientes/:id', clientesControladora.deleteClientes);
-module.exports = router;
+  router.delete('/:clienteId', clienteController.deletecliente);
+  return router;
+};
