@@ -25,7 +25,7 @@ const getclientesByRazonSocial= (req,res) =>{
     }
 }
 
-
+//Borrar Cliente
 const deleteClientes = (req,res) =>{
     const found = clientes.some(Clientes => Clientes.id === parseInt(req.params.id));
     if (found) {
@@ -37,9 +37,28 @@ const deleteClientes = (req,res) =>{
     }
 }
 
+// Actualizar Cliente
+const putClientes = (req,res) =>{
+    const found = clientes.some(idFilter(req));
+    if (found) {
+        clientes.forEach((cliente, i) => {
+        if (idFilter(req)(cliente)) {
+    
+            const updcliente = {...cliente, ...req.body};
+            clientes[i] = updcliente
+            res.json({ msg: 'cliente updated', updcliente });
+            }
+        });
+        } else {
+        res.status(400).json({ msg: `No cliente with the id of ${req.params.id}` });
+        }
+}
+
+
 module.exports ={
     getAllclientes,
     getclientesById,
     getclientesByRazonSocial,
-    deleteClientes
+    deleteClientes,
+    putClientes
 }
