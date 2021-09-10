@@ -4,7 +4,9 @@
   "description": "Empresa Caldar",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d output --watch"
+    "build": "babel src -d output --watch",
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "De Castro - Delmonte - Rodriguez",
   "license": "ISC",
@@ -14,6 +16,7 @@
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0"
+    "@babel/preset-env": "^7.15.0",
+    "nodemon": "^2.0.12"
   }
 }
