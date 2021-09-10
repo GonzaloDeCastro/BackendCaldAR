@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const bodyParser = require('body-parser');
 
+/* Body-Parser */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3001, () => {
     console.log('Aplicacion corriendo en el puerto 3001')
