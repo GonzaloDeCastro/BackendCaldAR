@@ -1,0 +1,61 @@
+[   
+    {
+        "id":1,
+        "razon_social":"Propo S.R.L.",
+        "direccion":"06ASD823 Kenwood Place",
+        "tipo":"A"
+    },
+    {
+        "id":2,
+        "razon_social":"CMydeo",
+        "direccion":"0CC6823 Kenwood Place",
+        "tipo":"C"
+    },
+    {
+        "id":3,
+        "razon_social":"Mydeo",
+        "direccion":"06823 Kenwood Place",
+        "tipo":"B"
+    },
+    {
+        "id":4,"razon_social":"Latz",
+        "direccion":"108 Delaware Hill",
+        "empresa":"Edificio"
+    },
+    {
+        "id":5,
+        "razon_social":"Wikido",
+        "direccion":"89 Arrowood Court",
+        "tipo":"A"
+    },
+    {
+        "id":6,
+        "razon_social":"Thoughtmix",
+        "direccion":"81 Independence Parkway",
+        "tipo":"D"
+    },
+    {
+        "id":7,
+        "razon_social":"Pixope",
+        "direccion":"69308 John Wall Drive",
+        "tipo":"B"
+    },
+    {
+        "id":8,
+        "razon_social":"Fanoodle",
+        "direccion":"1 Iowa Lane",
+        "tipo":"B"
+    },
+    {
+        "id":9,
+        "razon_social":"Topicshots",
+        "direccion":"6569 Declaration Junction",
+        "tipo":"D"
+    },
+    {
+        "id":10,
+        "razon_social":"Yakijo",
+        "direccion":"2834 South Parkway",
+        "tipo":"B"
+    }
+]
