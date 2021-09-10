@@ -21,7 +21,7 @@ app.use(clientesRuta);
 app.use('/api/calderas', calderasRuta());
 
 
-
+/*
 app.get('/pruebaGet', (req, res) => {
     res.send('PETICION GET RECEIVED');
 });
@@ -36,4 +36,4 @@ app.put('/pruebaPut', (req, res) => {
 
 app.delete('/pruebaDelete', (req, res) => {
     res.send('DELETE REQUEST RECEIVED');
-});
+});*/

@@ -11,7 +11,7 @@ exports.addNewcaldera = async (req, res) => {
     if (!calderas) return res.status(400).json('Json inexistente.');  //error no JSON file
     
     if (!direccion) {
-      return res.status(400).send({ error: 'No ingreso descripcion de la caldera.' });
+      return res.status(400).send({ error: 'No ingreso direccion de la caldera.' });
     }
 
     if (!tipo) {
@@ -37,7 +37,7 @@ exports.addNewcaldera = async (req, res) => {
 };
 
 
-// GET All calderas
+// Obtener calderas
 exports.getAllcalderas = async (req, res) => {
   try {
     let calderaJSON = fs.readFileSync('datos/calderas.json', 'utf8');
