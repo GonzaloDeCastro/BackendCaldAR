@@ -1,5 +1,4 @@
-{
-  "clientes" : [
+  [
     {
       "id": 1,
       "razon_social": "Skippad",
@@ -121,5 +120,4 @@
       "direccion": "0430 Corben Place",
       "empresa": "Edificio"
     }
-  ] 
-}
+  ]
