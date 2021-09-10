@@ -17,6 +17,7 @@ app.get('/', (request, response) => {
 })
 const clientesRuta = require('./rutas/rutaClientes');
 const calderasRuta = require('./rutas/rutaCalderas');
+
 app.use('/api/clientes', clientesRuta());
 app.use('/api/calderas', calderasRuta());
 
