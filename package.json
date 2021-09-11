@@ -4,10 +4,9 @@
   "description": "Empresa Caldar",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "build-babel": "babel src -d output --watch",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "build": "babel src -d output --watch",
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "De Castro - Delmonte - Rodriguez",
   "license": "ISC",
