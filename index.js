@@ -17,24 +17,7 @@ app.get('/', (request, response) => {
 })
 const tecnicosRuta = require('./rutas/rutaTecnicos');
 
-app.use(tecnicosRuta);
+
 app.use('/api/tecnicos', tecnicosRuta());
 
-
-
-app.get('/pruebaGet', (req, res) => {
-    res.send('PETICION GET RECEIVED');
-});
-
-app.post('/pruebaPost', (req, res) => {
-    res.send('POST REQUEST RECEIVED');
-});
-
-app.put('/pruebaPut', (req, res) => {
-    res.send('UPDATE REQUEST RECEIVED');
-});
-
-app.delete('/pruebaDelete', (req, res) => {
-    res.send('DELETE REQUEST RECEIVED');
-});
 
