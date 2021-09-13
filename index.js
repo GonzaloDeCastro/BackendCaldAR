@@ -15,6 +15,11 @@ app.listen(3001, () => {
 app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'index.html'))
 })
+<<<<<<< HEAD
+const tecnicosRuta = require('./rutas/rutaTecnicos');
+
+
+=======
 
 
 
@@ -24,6 +29,7 @@ const calderasRuta = require('./rutas/rutaCalderas');
 
 app.use('/api/clientes', clientesRuta());
 app.use('/api/calderas', calderasRuta());
+>>>>>>> 53e281e477ab527a2517fe0e41f7822ade71f197
 app.use('/api/tecnicos', tecnicosRuta());
 
 
