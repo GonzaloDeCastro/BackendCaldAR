@@ -88,8 +88,8 @@ exports.getTecnicoById = async (req, res) => {
 exports.getTecnicoByTipo = async (req, res) => {
     try {
         const tecnicoTipo = req.params.tecnicoTipo;
-        let tenicoJSON = fs.readFileSync('datos/tecnicos.json', 'utf8');
-        let tecnicos = JSON.parse(tenicoJSON);
+        let tecnicoJSON = fs.readFileSync('datos/tecnicos.json', 'utf8');
+        let tecnicos = JSON.parse(tecnicoJSON);
 
         let tecnico = tecnicos.filter(
             (tecnico) => tecnico.tipo === tecnicoTipo
