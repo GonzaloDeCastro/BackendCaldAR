@@ -3,8 +3,8 @@ const router = express.Router();
 const calderaController = require('../controladoras/controladoraCalderas');
 
 module.exports = () => {
-  router.post('/', calderaController.addNewcaldera);
-  
+  //router.post('/', calderaController.addNewcaldera);
+  router.post('/', calderaController.agregarCaldera);
   router.get('/all', calderaController.getAllcalderas);
   router.get('/tipo/:calderaTipo', calderaController.getcalderaByTipo);
   router.get('/:calderaId', calderaController.getcalderaById);
