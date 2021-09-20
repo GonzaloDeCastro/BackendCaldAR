@@ -4,7 +4,6 @@
   "description": "Empresa Caldar",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d output --watch",
     "start": "node index",
     "dev": "nodemon index"
   },
