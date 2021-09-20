@@ -17,9 +17,12 @@ mongoose.connect('mongodb+srv://GonzaloDeCastro:12ec5DciPaAA7Z7U@cluster0.ca39s.
 })
 
 
-app.listen(3001, () => {
-    console.log('Aplicacion corriendo en el puerto 3001');
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+    console.log('Aplicacion corriendo en el puerto ', port)
 });
+
 
 //Routes o rutas
 app.get('/', (request, response) => {
