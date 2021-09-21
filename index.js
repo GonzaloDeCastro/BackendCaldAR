@@ -1,14 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const conexion_bd = process.env.MONGODB_ATLAS;
+
+
 
 /* Body-Parser */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb+srv://GonzaloDeCastro:12ec5DciPaAA7Z7U@cluster0.ca39s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect(conexion_bd)
 .then((result) => {
     console.log(`Base de datos conectada`)
 })
