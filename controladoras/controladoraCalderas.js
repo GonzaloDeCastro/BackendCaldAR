@@ -1,6 +1,31 @@
+
+
+const { response } = require('express');
 const fs = require('fs');
 
+const calderaSchema = require('../modelos/modeloCalderas')
+
+
+exports.agregarCaldera = async(req, res) => {
+  try{
+
+    const caldera = new calderaSchema(req.body)
+    const nuevaCaldera = await caldera.save()
+
+    return res.status(201).json({
+      dato: nuevaCaldera,
+      error: false
+    })
+  }
+  catch (error){
+    return res.status(400).json({
+      error:true,
+      message: error
+    })
+  }
+}
 // Crear una Nueva Caldera
+/*
 exports.addNewcaldera = async (req, res) => {
   try {
     
@@ -34,9 +59,25 @@ exports.addNewcaldera = async (req, res) => {
     console.error(error);  //error
 
   }
+};*/
+
+exports.getAllcalderas = async (req, res) => {
+  try {
+    const response = await calderaSchema.find()
+    return res.status(200).json({
+      data: response,
+      error: false,
+    });
+  } 
+  catch (error) {
+    return res.status(400).json({
+      error: true,
+      message:error
+    })
+  }
 };
 
-
+/*
 // Obtener calderas
 exports.getAllcalderas = async (req, res) => {
   try {
@@ -48,9 +89,33 @@ exports.getAllcalderas = async (req, res) => {
     console.error(error);
   }
 };
-
+*/
 
 // Obtener Caldera por ID
+exports.getcalderaById = async (req, res) => {
+  try {
+    const response = await calderaSchema.findOne({ _id: req.params.calderaId })
+
+    if(!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: "Usuario no encontrado"
+      })     
+    }
+
+    return res.status(200).json({
+      data:response,
+      error: false
+    })
+  }
+  catch (error){
+    return res.status(400).json({
+      error: true,
+      message: error
+    })
+  }
+}
+/*
 exports.getcalderaById = async (req, res) => {
   try {
     const calderaId = req.params.calderaId;
@@ -68,7 +133,7 @@ exports.getcalderaById = async (req, res) => {
   } catch (error) {
     console.error(error);
   }
-};
+};*/
 
 
 // Obtener Caldera por tipo (A, B, C, o D)
@@ -144,7 +209,31 @@ exports.updatecaldera = async (req, res) => {
   }
 };
 
+exports.deletecaldera = async (req, res) => {
+  try {
+    const response = await calderaSchema.findOneAndRemove({ _id: req.params.calderaId})
 
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: "Usuario no encontrado para eliminar"
+      })
+    }
+    return res.status(202).json({
+      data:response,
+      error: false,
+    })
+  } 
+    catch (error) {
+      return res.status(400).json({
+        error: true,
+        message: error
+      })
+  }
+};
+
+
+/*
 // DELETE A caldera By ID
 exports.deletecaldera = async (req, res) => {
   try {
@@ -179,3 +268,4 @@ exports.deletecaldera = async (req, res) => {
     return res.status(500).json('Internal server error.');
   }
 };
+*/
