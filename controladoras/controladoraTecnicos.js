@@ -48,7 +48,6 @@ exports.addNewTecnico = async (req, res) => {
 };
 
 
-// GET All Tecnicos
 exports.getAlltecnicos = async (req, res) => {
     try {
         let tecnicoJSON = fs.readFileSync('datos/tecnicos.json', 'utf8');
@@ -62,7 +61,6 @@ exports.getAlltecnicos = async (req, res) => {
 };
 
 
-// Obtener Tecnico por ID
 exports.getTecnicoById = async (req, res) => {
     try {
         const tecnicoId = req.params.tecnicoId;
