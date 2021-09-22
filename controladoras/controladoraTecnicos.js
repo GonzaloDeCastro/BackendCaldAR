@@ -1,97 +1,66 @@
+const { response } = require('express');
 const fs = require('fs');
 
+
+const tecnicoSchema = require('../modelos/modeloTecnicos')
+
 // Crear una Nuevo Tecnico
-exports.addNewTecnico = async (req, res) => {
-  try {
-    const { nombre, dni, telefono, correo, direccion, tipo } = req.body; //data from POSTMAN
+exports.addNewTecnico = async(req, res) => {
+    try{
+        const tecnico = new tecnicoSchema(req.body)
+        const nuevaTecnico = await tecnico.save()
 
-    let tecnicoJSON = fs.readFileSync('datos/tecnicos.json', 'utf8'); //data from JSON file
-    let tecnicos = JSON.parse(tecnicoJSON);
-
-    if (!tecnicos) return res.status(400).json('Json inexistente.'); //error no JSON file
-
-    if (!nombre) {
-      return res
-        .status(400)
-        .send({ error: 'No ingreso el nombre del Técnico.' });
+        return res.status(201).json({
+            dato: nuevaTecnico,
+            error: false
+        })
     }
-    if (!dni) {
-      return res.status(400).send({ error: 'No ingreso el dni del Técnico.' });
-    }
-    if (!telefono) {
-      return res
-        .status(400)
-        .send({ error: 'No ingreso el telefono del Técnico.' });
-    }
-    if (!correo) {
-      return res
-        .status(400)
-        .send({ error: 'No ingreso el correo del Técnico.' });
-    }
-    if (!direccion) {
-      return res
-        .status(400)
-        .send({ error: 'No ingreso la dirección del Técnico.' });
-    }
-    if (!tipo) {
-      return res.status(400).send({ error: 'No ingreso el tipo de Técnico.' });
-    }
+    catch (error){
+        return res.status(400).json({
+            error:true,
+            message: error
+        })
 
-    const tecnicoId = Number(tecnicos[tecnicos.length - 1].id) + 1;
-    const newTecnico = {
-      id: tecnicoId,
-      nombre,
-      dni,
-      telefono,
-      correo,
-      direccion,
-      tipo
-    };
-    tecnicos.push(newTecnico);
-
-    fs.writeFileSync('datos/tecnicos.json', JSON.stringify(tecnicos), {
-      encoding: 'utf8',
-      flag: 'w'
-    });
-
-    return res.status(200).json(tecnicos);
-  } catch (error) {
-    console.error(error);
-    return res.status(404).json('Error Interno del Servidor.');
-  }
-};
-
+// GET All Tecnicos
 exports.getAlltecnicos = async (req, res) => {
-  try {
-    let tecnicoJSON = fs.readFileSync('datos/tecnicos.json', 'utf8');
-    let tecnicos = JSON.parse(tecnicoJSON);
-    if (!tecnicos) return res.status(400).json('Json inexistente.');
-    return res.status(200).json(tecnicos);
-  } catch (error) {
-    console.error(error);
-    return res.status(404).json('Error Interno del Servidor.');
-  }
+    try {
+        const response = await tecnicoSchema.find()
+        return res.status(200).json({
+            data: response,
+            error: false,
+        });
+    } 
+    catch (error) {
+        return res.status(400).json({
+            error: true,
+            message:error
+        })
+    }
 };
 
+// Obtener Tecnico por ID
 exports.getTecnicoById = async (req, res) => {
-  try {
-    const tecnicoId = req.params.tecnicoId;
-    let tecnicoJSON = fs.readFileSync('datos/tecnicos.json', 'utf8');
-    let tecnicos = JSON.parse(tecnicoJSON);
-
-    let tecnico = tecnicos.filter(
-      (tecnico) => Number(tecnico.id) === Number(tecnicoId)
-    );
-
-    if (tecnico.length === 0)
-      return res.status(400).json('No se encontro un Técnico con ese Id.');
-
-    return res.status(200).json(tecnico);
-  } catch (error) {
-    console.error(error);
-    return res.status(404).json('Error Interno del Servidor.');
-  }
-};
+    try {
+        const response = await tecnicoSchema.findOne({ _id: req.params.tecnicoId })
+  
+        if(!response || response.length === 0) {
+            return res.status(404).json({
+                error: true,
+                message: "Usuario no encontrado"
+            })     
+        }
+        return res.status(200).json({
+            data:response,
+            error: false
+        })
+    }
+    catch (error){
+        return res.status(400).json({
+            error: true,
+            message: error
+        })
+    }
+}
 
 // Obtener Tecnico por tipo (A, B, C o D)
 exports.getTecnicoByTipo = async (req, res) => {
