@@ -1,6 +1,7 @@
 const { response } = require('express');
 const fs = require('fs');
 
+
 const tecnicoSchema = require('../modelos/modeloTecnicos')
 
 // Crear una Nuevo Tecnico
@@ -19,8 +20,6 @@ exports.addNewTecnico = async(req, res) => {
             error:true,
             message: error
         })
-    }
-}
 
 // GET All Tecnicos
 exports.getAlltecnicos = async (req, res) => {
