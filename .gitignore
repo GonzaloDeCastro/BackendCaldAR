@@ -1,5 +1,3 @@
-node_modules
-
-rutas
-
-/src
+/node_modules
+/datos
+/.env
