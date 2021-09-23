@@ -33,11 +33,11 @@ app.get('/', (request, response) => {
 const mantenimientosRuta = require('./rutas/rutaMantenimientos');
 const clientesRuta = require('./rutas/rutaClientes');
 const calderasRuta = require('./rutas/rutaCalderas');
-//const tecnicosRuta = require('./rutas/rutaTecnicos');
+const tecnicosRuta = require('./rutas/rutaTecnicos');
 
 app.use('/api/mantenimientos', mantenimientosRuta());
 app.use('/api/clientes', clientesRuta());
 app.use('/api/calderas', calderasRuta());
-//app.use('/api/tecnicos', tecnicosRuta());
+app.use('/api/tecnicos', tecnicosRuta());
 
 console.log('Hi');
