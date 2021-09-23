@@ -5,15 +5,16 @@ const clienteSchema = require('../modelos/modeloClientes');
 exports.addNewcliente = async (req, res) => {
   try {
     const cliente = new clienteSchema(req.body);
-    const nuevoCliente = await cliente.save();
     //validacion
-    const { direccion } = req.body; //data from POSTMAN
-    if (!direccion) {
-      return res
-        .status(400)
-        .send({ error: 'No ingreso direccion de la cliente.' });
+    const { direccion, razon_social, telefono } = req.body; //data from POSTMAN
+    if (!direccion || !razon_social || !telefono) {
+      return res.status(400).json({
+        error: true,
+        message: 'Faltan ingresar datos.'
+      });
     }
-
+    //Guarda el cliente
+    const nuevoCliente = await cliente.save();
     return res.status(201).json({
       dato: nuevoCliente,
       error: false
