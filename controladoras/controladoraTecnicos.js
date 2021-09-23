@@ -6,61 +6,63 @@ const tecnicoSchema = require('../modelos/modeloTecnicos')
 
 // Crear una Nuevo Tecnico
 exports.addNewTecnico = async(req, res) => {
-    try{
-        const tecnico = new tecnicoSchema(req.body)
-        const nuevaTecnico = await tecnico.save()
+  try{
+    const tecnico = new tecnicoSchema(req.body)
+    const nuevaTecnico = await tecnico.save()
 
-        return res.status(201).json({
-            dato: nuevaTecnico,
-            error: false
-        })
-    }
-    catch (error){
-        return res.status(400).json({
-            error:true,
-            message: error
-        })
+    return res.status(201).json({
+      dato: nuevaTecnico,
+      error: false
+    })
+  }
+  catch (error){
+    return res.status(400).json({
+      error:true,
+      message: error
+    })
+  }
+};
 
 // GET All Tecnicos
 exports.getAlltecnicos = async (req, res) => {
-    try {
-        const response = await tecnicoSchema.find()
-        return res.status(200).json({
-            data: response,
-            error: false,
-        });
-    } 
-    catch (error) {
-        return res.status(400).json({
-            error: true,
-            message:error
-        })
-    }
+  try {
+    const response = await tecnicoSchema.find()
+    return res.status(200).json({
+      data: response,
+      error: false,
+    });
+  } 
+  catch (error) {
+    return res.status(400).json({
+      error: true,
+      message:error
+    })
+  }
 };
 
 // Obtener Tecnico por ID
 exports.getTecnicoById = async (req, res) => {
-    try {
-        const response = await tecnicoSchema.findOne({ _id: req.params.tecnicoId })
-  
-        if(!response || response.length === 0) {
-            return res.status(404).json({
-                error: true,
-                message: "Usuario no encontrado"
-            })     
-        }
-        return res.status(200).json({
-            data:response,
-            error: false
-        })
+  try {
+    const response = await tecnicoSchema.findOne({ _id: req.params.tecnicoId })
+
+    if(!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: "Usuario no encontrado"
+      })     
     }
-    catch (error){
-        return res.status(400).json({
-            error: true,
-            message: error
-        })
-    }
-}
+    return res.status(200).json({
+      data:response,
+      error: false
+    })
+  }
+  catch (error){
+    return res.status(400).json({
+      error: true,
+      message: error
+    })
+  }
+};
 
 // Obtener Tecnico por tipo (A, B, C o D)
 exports.getTecnicoByTipo = async (req, res) => {
