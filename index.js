@@ -39,3 +39,5 @@ app.use('/api/mantenimientos', mantenimientosRuta());
 app.use('/api/clientes', clientesRuta());
 app.use('/api/calderas', calderasRuta());
 //app.use('/api/tecnicos', tecnicosRuta());
+
+console.log('Hi');
