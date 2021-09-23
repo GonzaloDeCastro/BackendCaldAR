@@ -27,7 +27,7 @@ app.listen(port, () => {
 
 //Routes o rutas
 app.get('/', (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'index.html'));
+  response.sendFile(path.resolve(__dirname, 'index.js'));
 });
 
 const mantenimientosRuta = require('./rutas/rutaMantenimientos');
