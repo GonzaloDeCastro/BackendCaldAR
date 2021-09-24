@@ -7,8 +7,14 @@ const calderaSchema = require('../modelos/modeloCalderas');
 exports.agregarCaldera = async (req, res) => {
   try {
     const caldera = new calderaSchema(req.body);
+    const { direccion, razon_social, tipo } = req.body; //data from POSTMAN
+    if (!direccion || !razon_social || !tipo) {
+      return res.status(400).json({
+        error: true,
+        message: 'Faltan ingresar datos.'
+      });
+    }
     const nuevaCaldera = await caldera.save();
-
     return res.status(201).json({
       dato: nuevaCaldera,
       error: false

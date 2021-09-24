@@ -1,70 +1,69 @@
 const fs = require('fs');
 
-// Crear una Nuevo Cliente
+const clienteSchema = require('../modelos/modeloClientes');
+
 exports.addNewcliente = async (req, res) => {
   try {
-    const { direccion, tipo } = req.body; //data from POSTMAN
-
-    let clienteJSON = fs.readFileSync('datos/clientes.json', 'utf8'); //data from JSON file
-    let clientes = JSON.parse(clienteJSON);
-    if (!clientes) return res.status(400).json('Json inexistente.'); //error no JSON file
-
-    if (!direccion) {
-      return res
-        .status(400)
-        .send({ error: 'No ingreso direccion de la cliente.' });
+    const cliente = new clienteSchema(req.body);
+    //validacion
+    const { direccion, razon_social, telefono } = req.body; //data from POSTMAN
+    if (!direccion || !razon_social || !telefono) {
+      return res.status(400).json({
+        error: true,
+        message: 'Faltan ingresar datos.'
+      });
     }
-
-    if (!tipo) {
-      return res
-        .status(400)
-        .send({ error: 'No especifico el tipo de cliente.' });
-    }
-
-    const clienteId = Number(clientes[clientes.length - 1].id) + 1;
-    const newcliente = { id: clienteId, direccion, tipo };
-    clientes.push(newcliente);
-
-    fs.writeFileSync('datos/clientes.json', JSON.stringify(clientes), {
-      encoding: 'utf8',
-      flag: 'w'
+    //Guarda el cliente
+    const nuevoCliente = await cliente.save();
+    return res.status(201).json({
+      dato: nuevoCliente,
+      error: false
     });
-
-    return res.status(200).json(clientes);
   } catch (error) {
-    console.error(error); //error
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
   }
 };
 
 // Obtener clientes
 exports.getAllclientes = async (req, res) => {
   try {
-    let clienteJSON = fs.readFileSync('datos/clientes.json', 'utf8');
-    let clientes = JSON.parse(clienteJSON);
-    if (!clientes) return res.status(400).json('Json inexistente.');
-    return res.status(200).json(clientes);
+    const response = await clienteSchema.find();
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    console.error(error);
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
   }
 };
 
 // Obtener Cliente por ID
 exports.getclienteById = async (req, res) => {
   try {
-    const clienteId = req.params.clienteId;
-    let clienteJSON = fs.readFileSync('datos/clientes.json', 'utf8');
-    let clientes = JSON.parse(clienteJSON);
+    const response = await clienteSchema.findOne({ _id: req.params.clienteId });
 
-    let cliente = clientes.filter(
-      (cliente) => Number(cliente.id) === Number(clienteId)
-    );
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'Usuario no encontrado'
+      });
+    }
 
-    if (cliente.length === 0)
-      return res.status(400).json('No se encontro una cliente con ese Id.');
-
-    return res.status(200).json(cliente);
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    console.error(error);
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
   }
 };
 
@@ -142,35 +141,27 @@ exports.updatecliente = async (req, res) => {
 };
 
 // DELETE A cliente By ID
+
 exports.deletecliente = async (req, res) => {
   try {
-    const clienteId = req.params.clienteId;
-
-    let clienteJSON = fs.readFileSync('datos/clientes.json', 'utf8');
-
-    let clientes = JSON.parse(clienteJSON);
-    if (!clientes) return res.status(400).json('Json Inexistente.');
-
-    let clienteIndex = clientes.findIndex(
-      (cliente) => Number(cliente.id) === Number(clienteId)
-    );
-
-    if (clienteIndex === -1) {
-      return res
-        .status(400)
-        .send({ error: `No existe el edificio con id: ${clienteId} .` });
-    }
-
-    clientes.splice(clienteIndex, 1);
-
-    fs.writeFileSync('datos/clientes.json', JSON.stringify(clientes), {
-      encoding: 'utf8',
-      flag: 'w'
+    const response = await clienteSchema.findOneAndRemove({
+      _id: req.params.clienteId
     });
 
-    return res.status(200).json(clientes);
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'Usuario no encontrado para eliminar'
+      });
+    }
+    return res.status(202).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
   }
 };

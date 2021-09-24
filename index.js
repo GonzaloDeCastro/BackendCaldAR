@@ -27,7 +27,7 @@ app.listen(port, () => {
 
 //Routes o rutas
 app.get('/', (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'index.html'));
+  response.sendFile(path.resolve(__dirname, 'index.js'));
 });
 
 const mantenimientosRuta = require('./rutas/rutaMantenimientos');
@@ -39,3 +39,5 @@ app.use('/api/mantenimientos', mantenimientosRuta());
 app.use('/api/clientes', clientesRuta());
 app.use('/api/calderas', calderasRuta());
 app.use('/api/tecnicos', tecnicosRuta());
+
+console.log('Hi');
